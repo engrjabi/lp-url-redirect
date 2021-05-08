@@ -1,7 +1,7 @@
 // @ts-ignore
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 
-let path = localStorage.getItem("path");
+const path = localStorage.getItem("path");
 console.log("path", path);
 
 if (path) {
