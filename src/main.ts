@@ -1,20 +1,25 @@
 // @ts-ignore
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 
-const spreadsheetId = "1Qdl6oePPqalgQS_XZ8voAkRuHH1bwSXtUhBDANsS7Cs";
-const parser = new PublicGoogleSheetsParser();
+let path = localStorage.getItem("path");
+console.log("path", path);
 
-parser.parse(spreadsheetId).then((items: any) => {
-  const pathname = window.location.pathname.replace("/", "");
+if (path) {
+  localStorage.removeItem("path");
 
-  if (items !== null && items.length > 0) {
-    const urlIndex = items.findIndex((item: any) => {
-      return item.path === pathname;
-    });
+  const spreadsheetId = "1Qdl6oePPqalgQS_XZ8voAkRuHH1bwSXtUhBDANsS7Cs";
+  const parser = new PublicGoogleSheetsParser();
 
-    if (urlIndex !== -1) {
-      window.location.replace(items[urlIndex].link);
-      return;
+  parser.parse(spreadsheetId).then((items: any) => {
+    if (items !== null && items.length > 0) {
+      const urlIndex = items.findIndex((item: any) => {
+        return item.path === path;
+      });
+
+      if (urlIndex !== -1) {
+        window.location.replace(items[urlIndex].link);
+        return;
+      }
     }
-  }
-});
+  });
+}
