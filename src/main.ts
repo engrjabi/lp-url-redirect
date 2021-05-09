@@ -1,8 +1,9 @@
-import PublicGoogleSheetsParser from "public-google-sheets-parser";
-import { createApp } from "vue";
-import { VueMasonryPlugin } from "vue-masonry/src/masonry-vue3.plugin";
+import Vue from "vue";
 import App from "./App.vue";
-import mitt from "mitt";
+import PublicGoogleSheetsParser from "public-google-sheets-parser";
+import { VueMasonryPlugin } from "vue-masonry";
+
+Vue.config.productionTip = false;
 
 const spreadsheetId = "1Qdl6oePPqalgQS_XZ8voAkRuHH1bwSXtUhBDANsS7Cs";
 
@@ -29,8 +30,9 @@ if (path) {
     }
   });
 } else {
-  const emitter = mitt();
-  const app = createApp(App);
-  app.config.globalProperties.emitter = emitter;
-  app.use(VueMasonryPlugin).mount("#app");
+  Vue.use(VueMasonryPlugin);
+
+  new Vue({
+    render: (h) => h(App),
+  }).$mount("#app");
 }

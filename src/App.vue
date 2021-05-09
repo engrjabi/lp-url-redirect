@@ -1,5 +1,13 @@
 <template>
   <div>
+    <div class="header-title">Little Paradise</div>
+
+    <div class="links-container">
+      <AnimatedLink text="location" link="joshua" />
+      <AnimatedLink text="contact" link="joshua" />
+      <AnimatedLink text="page" link="joshua" />
+    </div>
+
     <div
       class="mansory-root"
       v-masonry="'containerId'"
@@ -26,7 +34,7 @@
           :data-href="item.link"
           data-allowfullscreen="true"
           data-width="400"
-          data-autoplay="true"
+          :data-autoplay="item.autoplay || false"
           data-lazy="false"
         />
       </div>
@@ -35,11 +43,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import Vue from "vue";
 import { assetSources, MansoryItemType } from "@/assetSources";
+import AnimatedLink from "@/components/AnimatedLink.vue";
 
-export default defineComponent({
+export default Vue.extend({
   name: "App",
+  components: {
+    AnimatedLink,
+  },
   data: () => {
     return {
       MansoryItemType,
@@ -52,7 +64,7 @@ export default defineComponent({
 
     const finished_rendering = function () {
       console.log("finished rendering plugins");
-      setTimeout(() => _this.$redrawVueMasonry("containerId"), 1000);
+      setInterval(() => _this.$redrawVueMasonry("containerId"), 1000);
     };
 
     // In your onload handler
@@ -63,13 +75,28 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
+/// https://colorhunt.co/palette/282056
+/// Color Palette
+
+.links-container {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.header-title {
+  font-family: "Cabin Sketch", cursive;
+  font-size: 80px;
+  margin-bottom: 0;
+  text-align: center;
+  color: #334443;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 
