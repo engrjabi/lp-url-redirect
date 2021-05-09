@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "mitt": "^2.1.0",
     "public-google-sheets-parser": "^1.2.4",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-masonry": "^0.13.0"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.5",
