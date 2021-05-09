@@ -3,6 +3,7 @@ import App from "./App.vue";
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 import { VueMasonryPlugin } from "vue-masonry";
 import VueSmoothScroll from "vue2-smooth-scroll";
+import { VueSpinners } from "@saeris/vue-spinners";
 
 Vue.config.productionTip = false;
 
@@ -33,6 +34,7 @@ if (path) {
 } else {
   Vue.use(VueMasonryPlugin);
   Vue.use(VueSmoothScroll);
+  Vue.use(VueSpinners);
 
   new Vue({
     render: (h) => h(App),

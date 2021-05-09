@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>Little Paradise</title>
+    <link rel="shortcut icon" href="https://littleparadise.rocks/favicon.ico" type="image/x-icon">
+    <meta property="og:title" content="Little Paradise">
+    <meta property="og:description" content="Baguio feels in the east!">
+    <meta property="og:image" content="https://littleparadise.rocks/img/house.jpg">
+    <meta property="og:url" content="https://littleparadise.rocks/">
+    <meta name="twitter:card" content="little_paradise_large_image">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
   </head>
+
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="fb-root"></div>
-    <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
-
     <div id="app"></div>
   </body>
 </html>

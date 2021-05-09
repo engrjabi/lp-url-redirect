@@ -5,4 +5,4 @@ declare module "*.vue" {
 
 declare module "public-google-sheets-parser";
 declare module "vue-masonry";
-declare module "vue-good-links";
+declare module "@saeris/vue-spinners";

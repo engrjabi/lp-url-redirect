@@ -13,24 +13,38 @@ for (let i = 1; i < 18; i++) {
 
 export const assetSources = [
   {
+    type: MansoryItemType.VIDEO,
+    link: "https://www.youtube.com/embed/vEpJY_MCS1Y",
+  },
+
+  {
+    type: MansoryItemType.VIDEO,
+    link: "https://www.youtube.com/embed/b10YRPynZO0",
+  },
+
+  {
+    type: MansoryItemType.VIDEO,
+    link: "https://www.youtube.com/embed/PPxi6mq1gkA",
+  },
+
+  {
+    type: MansoryItemType.VIDEO,
+    link: "https://www.youtube.com/embed/L6qMjRTl2xU",
+  },
+  {
+    type: MansoryItemType.VIDEO,
+    link: "https://www.youtube.com/embed/6n80OI8lffA",
+  },
+  {
+    type: MansoryItemType.VIDEO,
+    link: "https://www.youtube.com/embed/L0-EmVbvDi0",
+  },
+
+  {
     type: MansoryItemType.IMAGE,
     link: "/img/clouds1.jpg",
   },
-  {
-    type: MansoryItemType.VIDEO,
-    link:
-      "https://web.facebook.com/103547664793647/videos/1181762118934339?mute=0",
-  },
-  {
-    type: MansoryItemType.VIDEO,
-    link:
-      "https://web.facebook.com/103547664793647/videos/1181762118934339?mute=0",
-  },
-  {
-    type: MansoryItemType.VIDEO,
-    link:
-      "https://web.facebook.com/103547664793647/videos/1181762118934339?mute=0",
-  },
+
   {
     type: MansoryItemType.IMAGE,
     link: "/img/cup view 2.jpg",
@@ -55,26 +69,6 @@ export const assetSources = [
   {
     type: MansoryItemType.IMAGE,
     link: "/img/cup view.jpg",
-  },
-  {
-    type: MansoryItemType.VIDEO,
-    link: "https://fb.watch/5n6tY3EY66/",
-  },
-  // {
-  //   type: MansoryItemType.VIDEO,
-  //   link: "https://web.facebook.com/103547664793647/videos/454884619099748",
-  // },
-  // {
-  //   type: MansoryItemType.VIDEO,
-  //   link: "https://fb.watch/5n6yUOMXEj/",
-  // },
-  {
-    type: MansoryItemType.VIDEO,
-    link: "https://fb.watch/5n6zrtp25L/",
-  },
-  {
-    type: MansoryItemType.VIDEO,
-    link: "https://fb.watch/5n6DzslUz1/",
   },
   {
     type: MansoryItemType.IMAGE,

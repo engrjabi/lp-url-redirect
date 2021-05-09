@@ -1,11 +1,21 @@
 <template>
   <div>
+    <div v-if="!removeLoader" :class="['loader', hideLoader && 'loader--disable']">
+      <ClimbingBoxLoader
+        class="loader-animation"
+        loading
+        color="#334443"
+        :size="15"
+        sizeUnit="px"
+      />
+    </div>
+
     <div class="header-title">Little Paradise</div>
 
     <div class="links-container">
-      <AnimatedLink text="location" link="joshua" />
-      <AnimatedLink text="contact" link="joshua" />
-      <AnimatedLink text="page" link="joshua" />
+      <AnimatedLink text="location" link="/location" />
+      <AnimatedLink text="contact" link="/contact" />
+      <AnimatedLink text="community" link="/lp" />
     </div>
 
     <div
@@ -28,14 +38,14 @@
           class="mansory-image-item"
         />
 
-        <div
+        <iframe
           v-else-if="MansoryItemType.VIDEO === item.type"
-          class="fb-video"
-          :data-href="item.link"
-          data-allowfullscreen="true"
-          data-width="400"
-          :data-autoplay="item.autoplay || false"
-          data-lazy="false"
+          width="400"
+          height="300"
+          :src="item.link"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
         />
       </div>
     </div>
@@ -48,54 +58,32 @@ import { assetSources, MansoryItemType } from "@/assetSources";
 import AnimatedLink from "@/components/AnimatedLink.vue";
 import shuffle from "lodash/shuffle";
 import debounce from "lodash/debounce";
+import { ClimbingBoxLoader } from "@saeris/vue-spinners";
 
 export default Vue.extend({
   name: "App",
   components: {
     AnimatedLink,
+    ClimbingBoxLoader,
   },
   data: () => {
     return {
       MansoryItemType,
-      items: shuffle(assetSources),
+      items: [...shuffle(assetSources), ...shuffle(assetSources)],
+      hideLoader: false,
+      removeLoader: false,
     };
   },
   mounted() {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const _this: any = this;
 
-    const finished_rendering = function () {
-      console.log("finished rendering plugins");
-      setTimeout(() => _this.$redrawVueMasonry("containerId"), 1000);
-    };
-
-    this.$smoothScroll({
-      scrollTo: this.$el, // required if updateHistory is true
-    });
-
-    // In your onload handler
-    (window as any).FB.Event.subscribe("xfbml.render", finished_rendering);
-
-    setTimeout(() => _this.$redrawVueMasonry("containerId"), 500);
-
-    function getDocHeight() {
-      let D = document;
-      return Math.max(
-        D.body.scrollHeight,
-        D.documentElement.scrollHeight,
-        D.body.offsetHeight,
-        D.documentElement.offsetHeight,
-        D.body.clientHeight,
-        D.documentElement.clientHeight
-      );
-    }
-
-    const addMoreItems = () => {
-      console.log("aaa");
-      console.log(this.items);
-      this.items = shuffle(assetSources);
-      redrawVueMasonry();
-    };
+    setTimeout(() => {
+      _this.hideLoader = true;
+      setTimeout(() => {
+        _this.removeLoader = true;
+      }, 300);
+    }, 5000);
 
     const redrawVueMasonry = debounce(() => {
       setTimeout(() => _this.$redrawVueMasonry("containerId"), 1000);
@@ -103,41 +91,22 @@ export default Vue.extend({
       setTimeout(() => _this.$redrawVueMasonry("containerId"), 250);
     }, 100);
 
-    const smoothScroll = debounce(() => {
-      this.$smoothScroll({
-        duration: 300,
-        scrollTo: document.querySelector(".header-title"), // required if updateHistory is true
-      });
-    }, 100);
+    setTimeout(() => redrawVueMasonry(), 500);
 
-    const amountScrolled = debounce(() => {
-      let winheight =
-        window.innerHeight ||
-        (document.documentElement || document.body).clientHeight;
-      let docheight = getDocHeight();
-      let scrollTop =
-        window.pageYOffset ||
-        (document.documentElement || document.body.parentNode || document.body)
-          .scrollTop;
-      let trackLength = docheight - winheight;
-      let pctScrolled = Math.floor((scrollTop / trackLength) * 100); // gets percentage scrolled (ie: 80 or NaN if tracklength == 0)
-      console.log(pctScrolled + "% scrolled");
+    setTimeout(() => {
+      const headerTitle = document.querySelector(".header-title");
 
-      return pctScrolled;
-    }, 100);
+      if (headerTitle !== null) {
+        this.$smoothScroll({
+          duration: 300,
+          scrollTo: headerTitle, // required if updateHistory is true
+        });
+      }
+    }, 1000);
 
     window.addEventListener(
       "scroll",
       function () {
-        const amountScrolledPercent = amountScrolled();
-
-        if (amountScrolledPercent > 75) {
-          console.log(amountScrolledPercent);
-          console.log("scroll", document.querySelector(".header-title"));
-          smoothScroll();
-          addMoreItems();
-        }
-
         redrawVueMasonry();
       },
       false
@@ -148,7 +117,46 @@ export default Vue.extend({
 
 <style lang="scss">
 /// https://colorhunt.co/palette/282056
-/// Color Palette
+/// Color
+
+.loader {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+}
+
+.loader--disable {
+  opacity: 0;
+}
+
+body {
+  @media (min-width: 399px) {
+    margin-right: 0px;
+    margin-left: 5px;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
 
 .links-container {
   margin-bottom: 30px;
@@ -173,10 +181,15 @@ export default Vue.extend({
 
 .mansory-root {
   margin: 0 auto;
-}
 
-.mansory-image-item {
-  max-width: 400px;
+  .item img,
+  .item iframe {
+    max-width: 400px;
+
+    @media (max-width: 399px) {
+      max-width: 95vw;
+    }
+  }
 }
 
 .mansory-root .fb-video {
