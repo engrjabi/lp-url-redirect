@@ -1,5 +1,7 @@
 // @ts-ignore
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
+import { createApp } from "vue";
+import App from "./App.vue";
 
 const spreadsheetId = "1Qdl6oePPqalgQS_XZ8voAkRuHH1bwSXtUhBDANsS7Cs";
 /// Same root path here vue.config.js
@@ -25,4 +27,6 @@ if (path) {
       }
     }
   });
+} else {
+  createApp(App).mount("#app");
 }
