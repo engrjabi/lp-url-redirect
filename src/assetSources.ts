@@ -3,10 +3,28 @@ export enum MansoryItemType {
   VIDEO = "video",
 }
 
+const moreImageArr = [];
+for (let i = 1; i < 18; i++) {
+  moreImageArr.push({
+    type: MansoryItemType.IMAGE,
+    link: `/img/${i}.jpg`,
+  });
+}
+
 export const assetSources = [
   {
     type: MansoryItemType.IMAGE,
     link: "/img/clouds1.jpg",
+  },
+  {
+    type: MansoryItemType.VIDEO,
+    link:
+      "https://web.facebook.com/103547664793647/videos/1181762118934339?mute=0",
+  },
+  {
+    type: MansoryItemType.VIDEO,
+    link:
+      "https://web.facebook.com/103547664793647/videos/1181762118934339?mute=0",
   },
   {
     type: MansoryItemType.VIDEO,
@@ -82,4 +100,4 @@ export const assetSources = [
     type: MansoryItemType.IMAGE,
     link: "/img/wet.jpg",
   },
-];
+].concat(moreImageArr);

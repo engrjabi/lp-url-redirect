@@ -46,6 +46,8 @@
 import Vue from "vue";
 import { assetSources, MansoryItemType } from "@/assetSources";
 import AnimatedLink from "@/components/AnimatedLink.vue";
+import shuffle from "lodash/shuffle";
+import debounce from "lodash/debounce";
 
 export default Vue.extend({
   name: "App",
@@ -55,7 +57,7 @@ export default Vue.extend({
   data: () => {
     return {
       MansoryItemType,
-      items: assetSources,
+      items: shuffle(assetSources),
     };
   },
   mounted() {
@@ -64,13 +66,82 @@ export default Vue.extend({
 
     const finished_rendering = function () {
       console.log("finished rendering plugins");
-      setInterval(() => _this.$redrawVueMasonry("containerId"), 1000);
+      setTimeout(() => _this.$redrawVueMasonry("containerId"), 1000);
     };
+
+    this.$smoothScroll({
+      scrollTo: this.$el, // required if updateHistory is true
+    });
 
     // In your onload handler
     (window as any).FB.Event.subscribe("xfbml.render", finished_rendering);
 
     setTimeout(() => _this.$redrawVueMasonry("containerId"), 500);
+
+    function getDocHeight() {
+      let D = document;
+      return Math.max(
+        D.body.scrollHeight,
+        D.documentElement.scrollHeight,
+        D.body.offsetHeight,
+        D.documentElement.offsetHeight,
+        D.body.clientHeight,
+        D.documentElement.clientHeight
+      );
+    }
+
+    const addMoreItems = () => {
+      console.log("aaa");
+      console.log(this.items);
+      this.items = shuffle(assetSources);
+      redrawVueMasonry();
+    };
+
+    const redrawVueMasonry = debounce(() => {
+      setTimeout(() => _this.$redrawVueMasonry("containerId"), 1000);
+      setTimeout(() => _this.$redrawVueMasonry("containerId"), 500);
+      setTimeout(() => _this.$redrawVueMasonry("containerId"), 250);
+    }, 100);
+
+    const smoothScroll = debounce(() => {
+      this.$smoothScroll({
+        duration: 300,
+        scrollTo: document.querySelector(".header-title"), // required if updateHistory is true
+      });
+    }, 100);
+
+    const amountScrolled = debounce(() => {
+      let winheight =
+        window.innerHeight ||
+        (document.documentElement || document.body).clientHeight;
+      let docheight = getDocHeight();
+      let scrollTop =
+        window.pageYOffset ||
+        (document.documentElement || document.body.parentNode || document.body)
+          .scrollTop;
+      let trackLength = docheight - winheight;
+      let pctScrolled = Math.floor((scrollTop / trackLength) * 100); // gets percentage scrolled (ie: 80 or NaN if tracklength == 0)
+      console.log(pctScrolled + "% scrolled");
+
+      return pctScrolled;
+    }, 100);
+
+    window.addEventListener(
+      "scroll",
+      function () {
+        const amountScrolledPercent = amountScrolled();
+
+        if (amountScrolledPercent > 75) {
+          console.log(amountScrolledPercent);
+          console.log("scroll", document.querySelector(".header-title"));
+          smoothScroll();
+          addMoreItems();
+        }
+
+        redrawVueMasonry();
+      },
+      false
+    );
   },
 });
 </script>

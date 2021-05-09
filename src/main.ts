@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 import { VueMasonryPlugin } from "vue-masonry";
+import VueSmoothScroll from "vue2-smooth-scroll";
 
 Vue.config.productionTip = false;
 
@@ -31,6 +32,7 @@ if (path) {
   });
 } else {
   Vue.use(VueMasonryPlugin);
+  Vue.use(VueSmoothScroll);
 
   new Vue({
     render: (h) => h(App),
