@@ -1,9 +1,11 @@
 import Vue from "vue";
 import App from "./App.vue";
+import router from "./router";
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 import { VueMasonryPlugin } from "vue-masonry";
 import VueSmoothScroll from "vue2-smooth-scroll";
 import { VueSpinners } from "@saeris/vue-spinners";
+import Vue2TouchEvents from "vue2-touch-events";
 
 Vue.config.productionTip = false;
 
@@ -35,8 +37,10 @@ if (path) {
   Vue.use(VueMasonryPlugin);
   Vue.use(VueSmoothScroll);
   Vue.use(VueSpinners);
+  Vue.use(Vue2TouchEvents);
 
   new Vue({
+    router,
     render: (h) => h(App),
   }).$mount("#app");
 }
