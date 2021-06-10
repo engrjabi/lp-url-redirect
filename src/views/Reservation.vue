@@ -49,10 +49,10 @@
           </template>
         </DescriptionItem>
 
-        <DescriptionItem>
-          <template #label> Guest Count </template>
-          <template #value> Maximum of 10 people </template>
-        </DescriptionItem>
+<!--        <DescriptionItem>-->
+<!--          <template #label> Guest Count </template>-->
+<!--          <template #value> Maximum of 10 people </template>-->
+<!--        </DescriptionItem>-->
 
         <DescriptionItem>
           <template #label> Booking Status </template>
