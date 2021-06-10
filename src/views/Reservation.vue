@@ -23,7 +23,7 @@
         <DescriptionItem>
           <template #label> Booking ID </template>
           <template #value>
-            {{ ticketDetails["ID"] }}
+            {{ bookingId }}
           </template>
         </DescriptionItem>
 
@@ -49,10 +49,10 @@
           </template>
         </DescriptionItem>
 
-<!--        <DescriptionItem>-->
-<!--          <template #label> Guest Count </template>-->
-<!--          <template #value> Maximum of 10 people </template>-->
-<!--        </DescriptionItem>-->
+        <!--        <DescriptionItem>-->
+        <!--          <template #label> Guest Count </template>-->
+        <!--          <template #value> Maximum of 10 people </template>-->
+        <!--        </DescriptionItem>-->
 
         <DescriptionItem>
           <template #label> Booking Status </template>
@@ -84,6 +84,7 @@ export default Vue.extend({
     return {
       ticketDetails: {} as { [key: string]: string | number },
       invalidLink: false,
+      bookingId: null as string | null,
     };
   },
   computed: {
@@ -114,6 +115,7 @@ export default Vue.extend({
 
     if (params && params.id) {
       id = params.id;
+      this.bookingId = id;
     }
 
     if (id) {
@@ -123,6 +125,7 @@ export default Vue.extend({
         const reservationDetails = items.find(
           (item: any) => String(item.ID) === i
         );
+
         const reservationDetailsParsed: { [key: string]: string | number } = {};
 
         for (let value in reservationDetails) {
