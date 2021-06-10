@@ -39,14 +39,14 @@ if (path && !path.includes("reservation")) {
   Vue.use(VueSpinners);
   Vue.use(Vue2TouchEvents);
 
-  setTimeout(() => {
-    if (path && path.includes("reservation")) {
-      router.push(path);
-    }
-  }, 1000);
-
-  new Vue({
+  const app = new Vue({
     router,
     render: (h) => h(App),
   }).$mount("#app");
+
+  setTimeout(() => {
+    if (path && path.includes("reservation")) {
+      app.$router.push(path);
+    }
+  }, 1000);
 }
