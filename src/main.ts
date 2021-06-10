@@ -16,7 +16,7 @@ const ghPagePath = "lp-url-redirect";
 
 const path = localStorage.getItem("path");
 
-if (path) {
+if (path && !path.includes("reservation")) {
   localStorage.removeItem("path");
   const rootPath = path.replace(ghPagePath, "").replace("/", "");
   const parser = new PublicGoogleSheetsParser();
