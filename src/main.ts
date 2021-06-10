@@ -39,6 +39,12 @@ if (path && !path.includes("reservation")) {
   Vue.use(VueSpinners);
   Vue.use(Vue2TouchEvents);
 
+  setTimeout(() => {
+    if (path && path.includes("reservation")) {
+      router.push(path);
+    }
+  }, 1000);
+
   new Vue({
     router,
     render: (h) => h(App),
