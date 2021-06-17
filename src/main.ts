@@ -46,6 +46,7 @@ if (path && !path.includes("reservation")) {
 
   setTimeout(() => {
     if (path && path.includes("reservation")) {
+      localStorage.removeItem("path");
       app.$router.push(path);
     }
   }, 1000);
