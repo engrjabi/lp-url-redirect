@@ -82,7 +82,8 @@ export default Vue.extend({
 
 <style lang="scss">
 .calendar-view {
-  height: 100vh;
+  // Override .cv-wrapper
+  height: 100vh !important;
   min-width: 900px;
 
   .previousYear {
