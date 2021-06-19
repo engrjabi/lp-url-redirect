@@ -15,8 +15,9 @@ const spreadsheetId = "1Qdl6oePPqalgQS_XZ8voAkRuHH1bwSXtUhBDANsS7Cs";
 const ghPagePath = "lp-url-redirect";
 
 const path = localStorage.getItem("path");
+const vueRouterPaths = ["reservation", "calendar"];
 
-if (path && !path.includes("reservation")) {
+if (path && !vueRouterPaths.some((item) => path.includes(item))) {
   localStorage.removeItem("path");
   const rootPath = path.replace(ghPagePath, "").replace("/", "");
   const parser = new PublicGoogleSheetsParser();
@@ -45,7 +46,7 @@ if (path && !path.includes("reservation")) {
   }).$mount("#app");
 
   setTimeout(() => {
-    if (path && path.includes("reservation")) {
+    if (path && vueRouterPaths.some((item) => path.includes(item))) {
       localStorage.removeItem("path");
       app.$router.push(path);
     }
