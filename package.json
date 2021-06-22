@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "sh deploy.sh"
+    "deploy": "sh deploy.sh",
+    "renameImages": "cd './public/img' && ls -v | cat -n | while read n f; do mv -n \"$f\" \"$n.jpg\"; done"
   },
   "dependencies": {
     "@saeris/vue-spinners": "1.0.8",

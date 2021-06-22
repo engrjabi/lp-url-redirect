@@ -9,7 +9,7 @@
       Invalid Link
     </div>
 
-    <card v-else data-image="/img/house.jpg">
+    <card v-else data-image="/img/61.jpg">
       <div slot="header">
         <h1 class="reservation__header">Little Paradise Reservation</h1>
 
