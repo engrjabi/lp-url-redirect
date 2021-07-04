@@ -4,8 +4,8 @@ import router from "./router";
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 import { VueMasonryPlugin } from "vue-masonry";
 import VueSmoothScroll from "vue2-smooth-scroll";
-import { VueSpinners } from "@saeris/vue-spinners";
 import Vue2TouchEvents from "vue2-touch-events";
+import VueLazyload from "vue-lazyload";
 
 Vue.config.productionTip = false;
 
@@ -37,8 +37,8 @@ if (path && !vueRouterPaths.some((item) => path.includes(item))) {
 } else {
   Vue.use(VueMasonryPlugin);
   Vue.use(VueSmoothScroll);
-  Vue.use(VueSpinners);
   Vue.use(Vue2TouchEvents);
+  Vue.use(VueLazyload);
 
   const app = new Vue({
     router,

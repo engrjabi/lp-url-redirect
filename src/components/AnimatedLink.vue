@@ -1,24 +1,13 @@
 <template>
   <div :key="text" class="animated-link">
     <div @click="handleClick">{{ text }}</div>
-    <SyncLoader
-      class="animated-link__sync-loader"
-      loading
-      color="#c6ffc1"
-      :size="3"
-      sizeUnit="px"
-    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { SyncLoader } from "@saeris/vue-spinners";
 
 export default Vue.extend({
-  components: {
-    SyncLoader,
-  },
   props: {
     text: {
       type: String,
@@ -46,17 +35,5 @@ export default Vue.extend({
   cursor: pointer;
   margin: 0 20px;
   display: inline-block;
-
-  &:hover {
-    .animated-link__sync-loader {
-      opacity: 1;
-    }
-  }
-}
-
-.animated-link__sync-loader {
-  margin-top: -5px;
-  opacity: 0;
-  transition: all 300ms ease-in-out;
 }
 </style>

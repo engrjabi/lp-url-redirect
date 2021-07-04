@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-if="!removeLoader" :class="['loader', hideLoader && 'loader--disable']">
+    <div
+      v-if="!removeLoader"
+      :class="['loader', hideLoader && 'loader--disable']"
+    >
       <ClimbingBoxLoader
         class="loader-animation"
         loading
@@ -34,12 +37,13 @@
       >
         <img
           v-if="MansoryItemType.IMAGE === item.type"
-          :src="item.link"
+          v-lazy="item.link"
           class="mansory-image-item"
+          :alt="item.link"
         />
 
         <iframe
-          v-else-if="MansoryItemType.VIDEO === item.type"
+          v-else-if="MansoryItemType.VIDEO === item.type && removeLoader"
           width="400"
           height="300"
           :src="item.link"
@@ -68,7 +72,7 @@ export default Vue.extend({
   data: () => {
     return {
       MansoryItemType,
-      items: [...shuffle(assetSources), ...shuffle(assetSources)],
+      items: [...shuffle(assetSources)],
       hideLoader: false,
       removeLoader: false,
     };
@@ -82,7 +86,7 @@ export default Vue.extend({
       setTimeout(() => {
         _this.removeLoader = true;
       }, 300);
-    }, 5000);
+    }, 2000);
 
     const redrawVueMasonry = debounce(() => {
       setTimeout(() => _this.$redrawVueMasonry("containerId"), 1000);
