@@ -15,7 +15,7 @@ const spreadsheetId = "1Qdl6oePPqalgQS_XZ8voAkRuHH1bwSXtUhBDANsS7Cs";
 const ghPagePath = "lp-url-redirect";
 
 const path = localStorage.getItem("path");
-const vueRouterPaths = ["reservation", "calendar"];
+const vueRouterPaths = ["reservation", "calendar", "more-info"];
 
 if (path && !vueRouterPaths.some((item) => path.includes(item))) {
   localStorage.removeItem("path");

@@ -22,6 +22,12 @@ const routes: Array<RouteConfig> = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Calendar.vue"),
   },
+  {
+    path: "/more-info",
+    name: "more-info",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/MoreInfo.vue"),
+  },
 ];
 
 const router = new VueRouter({
