@@ -33,7 +33,7 @@ export default Vue.extend({
   background-color: transparent;
   font-weight: bolder;
   cursor: pointer;
-  margin: 0 20px;
+  margin: 0 3px;
   display: inline-block;
 }
 </style>

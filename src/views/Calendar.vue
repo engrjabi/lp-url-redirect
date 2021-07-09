@@ -1,5 +1,7 @@
 <template>
   <div class="calendar-view__container">
+    <LoaderComponent :removeLoader="removeLoader" :hideLoader="hideLoader" />
+
     <calendar-view
       :show-date="showDate"
       class="theme-default calendar-view"
@@ -19,6 +21,7 @@
 import Vue from "vue";
 import { CalendarView, CalendarViewHeader } from "vue-simple-calendar";
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
+import LoaderComponent from "@/components/LoaderComponent.vue";
 require("vue-simple-calendar/static/css/default.css");
 
 export default Vue.extend({
@@ -26,11 +29,14 @@ export default Vue.extend({
     return {
       showDate: new Date(),
       items: [],
+      hideLoader: false,
+      removeLoader: false,
     };
   },
   components: {
     CalendarView,
     CalendarViewHeader,
+    LoaderComponent,
   },
   methods: {
     setShowDate(d: Date) {
@@ -45,6 +51,8 @@ export default Vue.extend({
     },
   },
   mounted() {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const _this: any = this;
     const spreadsheetId = "1Qdl6oePPqalgQS_XZ8voAkRuHH1bwSXtUhBDANsS7Cs";
     const parser = new PublicGoogleSheetsParser();
 
@@ -52,6 +60,14 @@ export default Vue.extend({
       .parse(spreadsheetId, "calendar")
       .then((items: any, index: number) => {
         this.items = items.map((item: any) => {
+          // Done parsing spreadsheet remove loader
+          setTimeout(() => {
+            _this.hideLoader = true;
+            setTimeout(() => {
+              _this.removeLoader = true;
+            }, 300);
+          }, 500);
+
           if (item && item.Start) {
             const startDate = item.Start.replace("Date(", "")
               .replace(")", "")

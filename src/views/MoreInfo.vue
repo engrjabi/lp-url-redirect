@@ -1,14 +1,6 @@
 <template>
   <div>
-    <div class="header-title">
-      <router-link to="/">Little Paradise</router-link>
-    </div>
-
-    <div class="links-container">
-      <AnimatedLink text="location" link="/location" />
-      <AnimatedLink text="contact" link="/contact" />
-      <AnimatedLink text="community" link="/lp" />
-    </div>
+    <HeaderWithNav />
 
     <div class="more-info__body">
       <div class="more-info__sub-title">House Rules</div>
@@ -22,11 +14,11 @@
 
 <script lang="ts">
 import Vue from "vue";
-import AnimatedLink from "@/components/AnimatedLink.vue";
+import HeaderWithNav from "@/components/HeaderWithNav.vue";
 
 export default Vue.extend({
   components: {
-    AnimatedLink,
+    HeaderWithNav,
   },
   data: () => {
     return {};
@@ -54,47 +46,5 @@ export default Vue.extend({
     display: block;
     max-width: 100vw;
   }
-}
-
-body {
-  margin: 0;
-}
-
-body::-webkit-scrollbar {
-  width: 5px;
-}
-
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
-
-.links-container {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.header-title {
-  font-family: "Cabin Sketch", cursive;
-  font-size: 80px;
-  margin-bottom: 0;
-  text-align: center;
-
-  a {
-    color: #334443 !important;
-    text-decoration: none !important;
-  }
-}
-
-#app {
-  font-family: sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  margin-top: 60px;
 }
 </style>

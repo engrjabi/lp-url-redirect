@@ -1,25 +1,8 @@
 <template>
   <div>
-    <div
-      v-if="!removeLoader"
-      :class="['loader', hideLoader && 'loader--disable']"
-    >
-      <ClimbingBoxLoader
-        class="loader-animation"
-        loading
-        color="#334443"
-        :size="15"
-        sizeUnit="px"
-      />
-    </div>
+    <LoaderComponent :removeLoader="removeLoader" :hideLoader="hideLoader" />
 
-    <div class="header-title">Little Paradise</div>
-
-    <div class="links-container">
-      <AnimatedLink text="location" link="/location" />
-      <AnimatedLink text="contact" link="/contact" />
-      <AnimatedLink text="community" link="/lp" />
-    </div>
+    <HeaderWithNav />
 
     <div
       class="mansory-root"
@@ -59,15 +42,15 @@
 <script lang="ts">
 import Vue from "vue";
 import { assetSources, MansoryItemType } from "@/assetSources";
-import AnimatedLink from "@/components/AnimatedLink.vue";
 import shuffle from "lodash/shuffle";
 import debounce from "lodash/debounce";
-import { ClimbingBoxLoader } from "@saeris/vue-spinners";
+import LoaderComponent from "@/components/LoaderComponent.vue";
+import HeaderWithNav from "@/components/HeaderWithNav.vue";
 
 export default Vue.extend({
   components: {
-    AnimatedLink,
-    ClimbingBoxLoader,
+    HeaderWithNav,
+    LoaderComponent,
   },
   data: () => {
     return {
@@ -94,7 +77,7 @@ export default Vue.extend({
       setTimeout(() => _this.$redrawVueMasonry("containerId"), 250);
     }, 100);
 
-    setTimeout(() => redrawVueMasonry(), 500);
+    setTimeout(() => redrawVueMasonry(), 1500);
 
     setTimeout(() => {
       const headerTitle = document.querySelector(".header-title");
@@ -121,63 +104,6 @@ export default Vue.extend({
 <style lang="scss">
 /// https://colorhunt.co/palette/282056
 /// Color
-
-.loader {
-  width: 100vw;
-  height: 100vh;
-  background: white;
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
-  transition: all 300ms ease-in-out;
-}
-
-.loader--disable {
-  opacity: 0;
-}
-
-body {
-  margin: 0;
-}
-
-body::-webkit-scrollbar {
-  width: 5px;
-}
-
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
-
-.links-container {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.header-title {
-  font-family: "Cabin Sketch", cursive;
-  font-size: 80px;
-  margin-bottom: 0;
-  text-align: center;
-  color: #334443;
-}
-
-#app {
-  font-family: sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  margin-top: 60px;
-}
 
 .mansory-root {
   margin: 0 auto;
