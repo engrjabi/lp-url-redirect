@@ -1,5 +1,6 @@
 <html lang="en">
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async=""
       src="https://www.googletagmanager.com/gtag/js?id=G-W1XLJM49ND"
@@ -13,9 +14,10 @@
 
       gtag("config", "G-W1XLJM49ND");
     </script>
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Little Paradise | Cabin Rental | Baguio feels in the east!</title>
     <link
       rel="shortcut icon"
@@ -37,23 +39,127 @@
     />
     <meta property="og:url" content="https://littleparadise.rocks/" />
     <meta name="twitter:card" content="little_paradise_large_image" />
-    <link href="/css/about.8e0c9e65.css" rel="prefetch" />
-    <link href="/js/about.69bba667.js" rel="prefetch" />
-    <link href="/css/app.2c75f7f7.css" rel="preload" as="style" />
-    <link href="/js/app.9b885a3b.js" rel="preload" as="script" />
-    <link href="/js/chunk-vendors.6bb6d620.js" rel="preload" as="script" />
-    <link href="/css/app.2c75f7f7.css" rel="stylesheet" />
+    <link href="/js/about.js" rel="prefetch" />
+    <link href="/js/app.js" rel="preload" as="script" />
+    <link href="/js/chunk-vendors.js" rel="preload" as="script" />
+    <style type="text/css">
+      body {
+        margin: 0;
+      }
+      body::-webkit-scrollbar {
+        width: 5px;
+      }
+      body::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+      body::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+      }
+      #app {
+        font-family: sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        margin-top: 60px;
+      }
+    </style>
     <style data-emotion=""></style>
-    <link rel="stylesheet" type="text/css" href="/css/about.8e0c9e65.css" />
-    <script charset="utf-8" src="/js/about.69bba667.js"></script>
+    <style type="text/css">
+      .loader {
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+        transition: all 300ms ease-in-out;
+      }
+      .loader--disable {
+        opacity: 0;
+      }
+    </style>
+    <style type="text/css">
+      .animated-link {
+        font-family: "Noto Sans JP", sans-serif;
+        color: #34656d;
+        background-color: transparent;
+        font-weight: bolder;
+        cursor: pointer;
+        margin: 0 3px;
+        display: inline-block;
+      }
+    </style>
+    <style type="text/css">
+      .links-container {
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .header-title {
+        font-family: "Cabin Sketch", cursive;
+        font-size: 80px;
+        margin-bottom: 0;
+        text-align: center;
+      }
+      .header-title a {
+        color: #334443 !important;
+        text-decoration: none !important;
+      }
+      .link-divider {
+        font-family: "Noto Sans JP", sans-serif;
+        color: #34656d;
+        font-weight: bolder;
+      }
+    </style>
+    <style type="text/css">
+      .mansory-root {
+        margin: 0 auto;
+      }
+      .mansory-root .item img,
+      .mansory-root .item iframe {
+        max-width: 400px;
+      }
+      @media (max-width: 399px) {
+        .mansory-root .item img,
+        .mansory-root .item iframe {
+          max-width: 95vw;
+        }
+      }
+      .mansory-root .fb-video {
+        margin-bottom: 3px;
+      }
+    </style>
+    <script charset="utf-8" src="/js/about.js"></script>
+    <style type="text/css">
+      .more-info__sub-title {
+        font-family: "Noto Sans JP", sans-serif;
+        color: #34656d;
+        background-color: transparent;
+        font-weight: bolder;
+        margin: 10px 20px;
+        font-size: 24px;
+        text-align: center;
+      }
+      .more-info__body img {
+        margin: 0 auto;
+        display: block;
+        max-width: 100vw;
+      }
+    </style>
   </head>
+
   <body>
-    <noscript
-      ><strong
+    <noscript>
+      <strong
         >We're sorry but url-short-vue doesn't work properly without JavaScript
         enabled. Please enable it to continue.</strong
-      ></noscript
-    >
+      >
+    </noscript>
     <div>
       <div>
         <div>
@@ -66,8 +172,12 @@
             <div class="animated-link"><div>contact</div></div>
             <span class="link-divider"> | </span>
             <div class="animated-link"><div>fb</div></div>
-            <span class="link-divider"> | </span>
+            <div></div>
             <div class="animated-link"><div>calendar</div></div>
+            <span class="link-divider"> | </span>
+            <div class="animated-link"><div>airbnb</div></div>
+            <span class="link-divider"> | </span>
+            <div class="animated-link"><div>house rules</div></div>
           </div>
         </div>
         <div class="more-info__body">
@@ -78,18 +188,20 @@
         </div>
       </div>
     </div>
-    <link rel="preconnect" href="https://fonts.gstatic.com" /><link
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
       href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&amp;family=Noto+Sans+JP:wght@100&amp;display=swap"
       rel="stylesheet"
     />
-    <script src="/js/chunk-vendors.6bb6d620.js"></script>
-    <script src="/js/app.9b885a3b.js"></script>
     <div
       id="GJ85ndtMbqF3dfZtlRGcM"
       data-version="1.23.5"
       data-environment="production"
       style="display: none"
     ></div>
+    <script type="text/javascript" src="/js/chunk-vendors.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
   </body>
   <div
     style="
