@@ -4,7 +4,7 @@ export enum MansoryItemType {
 }
 
 const moreImageArr = [];
-for (let i = 1; i < 67; i++) {
+for (let i = 1; i < 200; i++) {
   moreImageArr.push({
     type: MansoryItemType.IMAGE,
     link: `/img/${i}.jpg`,
