@@ -38,15 +38,6 @@ if (path && !vueRouterPaths.some((item) => path.includes(item))) {
   const rootPath = path.replace(ghPagePath, "").replace("/", "");
   const parser = new PublicGoogleSheetsParser();
 
-  try {
-    if (linkRedirectCache) {
-      const linkRedirectCacheParsed = JSON.parse(linkRedirectCache);
-      redirectToDefinedUrl(linkRedirectCacheParsed, rootPath);
-    }
-  } catch (e) {
-    console.log(e);
-  }
-
   parser.parse(spreadsheetId).then((items: any) => {
     if (items !== null && items.length > 0) {
       try {
@@ -58,6 +49,17 @@ if (path && !vueRouterPaths.some((item) => path.includes(item))) {
       redirectToDefinedUrl(items, rootPath);
     }
   });
+
+  setTimeout(() => {
+    try {
+      if (linkRedirectCache) {
+        const linkRedirectCacheParsed = JSON.parse(linkRedirectCache);
+        redirectToDefinedUrl(linkRedirectCacheParsed, rootPath);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }, 500);
 } else {
   Vue.use(VueMasonryPlugin);
   Vue.use(VueSmoothScroll);

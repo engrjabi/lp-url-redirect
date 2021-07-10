@@ -15,6 +15,9 @@
       <span class="link-divider"> | </span>
 
       <AnimatedLink text="calendar" link="/calendar" />
+      <span class="link-divider"> | </span>
+
+      <AnimatedLink text="airbnb" link="/airbnb" />
     </div>
   </div>
 </template>
