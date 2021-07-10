@@ -12,12 +12,16 @@
       <span class="link-divider"> | </span>
 
       <AnimatedLink text="fb" link="/lp" />
-      <span class="link-divider"> | </span>
+
+      <div />
 
       <AnimatedLink text="calendar" link="/calendar" />
       <span class="link-divider"> | </span>
 
       <AnimatedLink text="airbnb" link="/airbnb" />
+      <span class="link-divider"> | </span>
+
+      <AnimatedLink text="house rules" link="/more-info" />
     </div>
   </div>
 </template>
