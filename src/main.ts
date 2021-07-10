@@ -13,25 +13,49 @@ const spreadsheetId = "1Qdl6oePPqalgQS_XZ8voAkRuHH1bwSXtUhBDANsS7Cs";
 
 /// Same root path here vue.config.js
 const ghPagePath = "lp-url-redirect";
+const linkRedirectCacheKey = "linkRedirectCache";
 
 const path = localStorage.getItem("path");
 const vueRouterPaths = ["reservation", "calendar", "more-info"];
 
+const redirectToDefinedUrl = (
+  items: { [key: string]: any },
+  rootPath: string
+) => {
+  const urlIndex = items.findIndex((item: any) => {
+    return item.path === rootPath;
+  });
+
+  if (urlIndex !== -1) {
+    window.location.replace(items[urlIndex].link);
+    return;
+  }
+};
+
 if (path && !vueRouterPaths.some((item) => path.includes(item))) {
+  const linkRedirectCache = localStorage.getItem(linkRedirectCacheKey);
   localStorage.removeItem("path");
   const rootPath = path.replace(ghPagePath, "").replace("/", "");
   const parser = new PublicGoogleSheetsParser();
 
+  try {
+    if (linkRedirectCache) {
+      const linkRedirectCacheParsed = JSON.parse(linkRedirectCache);
+      redirectToDefinedUrl(linkRedirectCacheParsed, rootPath);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+
   parser.parse(spreadsheetId).then((items: any) => {
     if (items !== null && items.length > 0) {
-      const urlIndex = items.findIndex((item: any) => {
-        return item.path === rootPath;
-      });
-
-      if (urlIndex !== -1) {
-        window.location.replace(items[urlIndex].link);
-        return;
+      try {
+        localStorage.setItem(linkRedirectCacheKey, JSON.stringify(items));
+      } catch (e) {
+        console.log(e);
       }
+
+      redirectToDefinedUrl(items, rootPath);
     }
   });
 } else {
