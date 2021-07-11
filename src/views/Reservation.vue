@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="reservation__container">
     <div v-if="!ticketDetails['Start Date'] && !invalidLink"></div>
 
     <div
@@ -208,5 +208,13 @@ $small: 360px;
 
 .booking-status--not-paid {
   color: #e57373;
+}
+
+.reservation__container {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 5vh;
 }
 </style>

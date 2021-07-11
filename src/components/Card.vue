@@ -105,14 +105,6 @@ $hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
 $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 $small: 360px;
 
-.container {
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: 100vh;
-}
-
 .card-wrap {
   margin: auto;
   transform: perspective(800px);
