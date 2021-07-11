@@ -1,3 +1,5 @@
+import shuffle from "lodash/shuffle";
+
 export enum MansoryItemType {
   IMAGE = "image",
   VIDEO = "video",
@@ -39,4 +41,4 @@ export const assetSources = [
     type: MansoryItemType.VIDEO,
     link: "https://www.youtube.com/embed/L0-EmVbvDi0",
   },
-].concat(moreImageArr);
+].concat(shuffle(moreImageArr));
