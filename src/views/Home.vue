@@ -47,7 +47,7 @@ import debounce from "lodash/debounce";
 import LoaderComponent from "@/components/LoaderComponent.vue";
 import HeaderWithNav from "@/components/HeaderWithNav.vue";
 
-const imageStepCount = 30;
+const imageStepCount = 10;
 
 export default Vue.extend({
   components: {
