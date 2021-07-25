@@ -119,5 +119,28 @@ export default Vue.extend({
 .calendar-view__container {
   overflow-y: hidden;
   font-family: "Noto Sans JP", sans-serif;
+
+  .cv-header button {
+    background-color: #e1cd933b;
+    color: #000;
+  }
+
+  .cv-item {
+    border-color: #e1cd93;
+    background-color: #e1cd93;
+  }
+
+  .cv-header,
+  .cv-header-day {
+    background-color: #fff;
+  }
+
+  .cv-day.today {
+    background-color: #98c6b352;
+  }
+
+  .cv-header .periodLabel {
+    font-weight: bolder;
+  }
 }
 </style>
