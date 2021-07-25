@@ -7,26 +7,21 @@
     </div>
 
     <div class="links-container">
-      <AnimatedLink text="location" link="/location" />
-      <span class="link-divider"> | </span>
+      <div class="body-text">book now thru</div>
 
-      <AnimatedLink text="contact" link="/contact" />
-      <span class="link-divider"> | </span>
+      <AnimatedLink is-primary text="messenger" link="/contact" />
+      <span class="body-text">OR</span>
+      <AnimatedLink is-primary text="airbnb" link="/airbnb" />
 
-      <AnimatedLink text="fb" link="/lp" />
-      <span class="link-divider"> | </span>
+      <div></div>
 
-      <AnimatedLink text="pics" link="/" />
-
+      <AnimatedLink is-support text="available dates" link="/calendar" />
+      <AnimatedLink is-support text="show location" link="/location" />
       <div />
 
-      <AnimatedLink text="calendar" link="/calendar" />
-      <span class="link-divider"> | </span>
-
-      <AnimatedLink text="airbnb" link="/airbnb" />
-      <span class="link-divider"> | </span>
-
-      <AnimatedLink text="more info" link="/more-info" />
+      <AnimatedLink is-footer text="fb page" link="/lp" />
+      <AnimatedLink is-footer text="pics" link="/" />
+      <AnimatedLink is-footer text="more info" link="/more-info" />
     </div>
   </div>
 </template>
@@ -79,9 +74,10 @@ export default Vue.extend({
   max-width: 100vw;
 }
 
-.link-divider {
+.body-text {
   font-family: "Noto Sans JP", sans-serif;
   color: #34656d;
   font-weight: bolder;
+  opacity: 0.6;
 }
 </style>
