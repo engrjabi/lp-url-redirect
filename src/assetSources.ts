@@ -13,7 +13,12 @@ for (let i = 1; i < 200; i++) {
   });
 }
 
+const moreImageArrShuffled = shuffle(moreImageArr);
+const moreImageArrPart1 = moreImageArrShuffled.slice(0, 10);
+const moreImageArrPart2 = moreImageArrShuffled.slice(10);
+
 export const assetSources = [
+  ...moreImageArrPart1,
   {
     type: MansoryItemType.VIDEO,
     link: "https://www.youtube.com/embed/vEpJY_MCS1Y",
@@ -41,4 +46,5 @@ export const assetSources = [
     type: MansoryItemType.VIDEO,
     link: "https://www.youtube.com/embed/L0-EmVbvDi0",
   },
-].concat(shuffle(moreImageArr));
+  ...moreImageArrPart2,
+];

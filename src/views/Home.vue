@@ -73,7 +73,7 @@ export default Vue.extend({
       setTimeout(() => {
         _this.removeLoader = true;
       }, 300);
-    }, 2000);
+    }, 1500);
 
     // Debounced Functions
     const redrawVueMasonry = debounce(() => {
