@@ -1,19 +1,22 @@
 <template>
-  <div class="calendar-view__container">
+  <div>
     <LoaderComponent :removeLoader="removeLoader" :hideLoader="hideLoader" />
+    <HeaderWithNav />
 
-    <calendar-view
-      :show-date="showDate"
-      class="theme-default calendar-view"
-      :items="items"
-    >
-      <template #header="{ headerProps }">
-        <calendar-view-header
-          :header-props="headerProps"
-          @input="setShowDate"
-        />
-      </template>
-    </calendar-view>
+    <div class="calendar-view__container">
+      <calendar-view
+        :show-date="showDate"
+        class="theme-default calendar-view"
+        :items="items"
+      >
+        <template #header="{ headerProps }">
+          <calendar-view-header
+            :header-props="headerProps"
+            @input="setShowDate"
+          />
+        </template>
+      </calendar-view>
+    </div>
   </div>
 </template>
 
@@ -22,6 +25,7 @@ import Vue from "vue";
 import { CalendarView, CalendarViewHeader } from "vue-simple-calendar";
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
 import LoaderComponent from "@/components/LoaderComponent.vue";
+import HeaderWithNav from "@/components/HeaderWithNav.vue";
 require("vue-simple-calendar/static/css/default.css");
 
 export default Vue.extend({
@@ -37,6 +41,7 @@ export default Vue.extend({
     CalendarView,
     CalendarViewHeader,
     LoaderComponent,
+    HeaderWithNav,
   },
   methods: {
     setShowDate(d: Date) {
