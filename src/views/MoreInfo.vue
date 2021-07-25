@@ -52,6 +52,7 @@ export default Vue.extend({
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: flex-start;
 
   img {
     margin: 10px;
