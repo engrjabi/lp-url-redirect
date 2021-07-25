@@ -3,11 +3,10 @@
     <HeaderWithNav />
 
     <div class="more-info__body">
-      <div class="more-info__sub-title">House Rules</div>
-      <img src="/img/house-rules.png" />
-
-      <div class="more-info__sub-title">Amenities</div>
-      <img src="/img/guest-access.png" />
+      <img :src="amenities" />
+      <img :src="optionalAddons" />
+      <img :src="thingsToBring" />
+      <img :src="houseRules" />
     </div>
   </div>
 </template>
@@ -15,13 +14,22 @@
 <script lang="ts">
 import Vue from "vue";
 import HeaderWithNav from "@/components/HeaderWithNav.vue";
+import amenities from "../assets/amenities.svg";
+import houseRules from "../assets/house_rules.svg";
+import optionalAddons from "../assets/optional_addons.svg";
+import thingsToBring from "../assets/things_to_bring.svg";
 
 export default Vue.extend({
   components: {
     HeaderWithNav,
   },
   data: () => {
-    return {};
+    return {
+      optionalAddons,
+      houseRules,
+      amenities,
+      thingsToBring,
+    };
   },
 });
 </script>
@@ -41,10 +49,18 @@ export default Vue.extend({
 }
 
 .more-info__body {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
   img {
-    margin: 0 auto;
-    display: block;
+    margin: 10px;
     max-width: 100vw;
+    width: 35vw;
+
+    @media (max-width: 399px) {
+      width: 90vw;
+    }
   }
 }
 </style>

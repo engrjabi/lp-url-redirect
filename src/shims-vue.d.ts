@@ -3,6 +3,11 @@ declare module "*.vue" {
   export default Vue;
 }
 
+declare module "*.svg" {
+  const content: Svg;
+  export default content;
+}
+
 declare module "public-google-sheets-parser";
 declare module "vue-masonry";
 declare module "@saeris/vue-spinners";

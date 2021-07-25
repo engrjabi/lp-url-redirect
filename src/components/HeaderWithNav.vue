@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="header-title">
-      <router-link to="/">Little Paradise</router-link>
+      <router-link to="/">
+        <img class="header-title__logo-image" :src="logo" alt="logo" />
+      </router-link>
     </div>
 
     <div class="links-container">
@@ -29,13 +31,16 @@
 <script lang="ts">
 import Vue from "vue";
 import AnimatedLink from "@/components/AnimatedLink.vue";
+import logo from "../assets/logo_with_label.svg";
 
 export default Vue.extend({
   components: {
     AnimatedLink,
   },
   data: () => {
-    return {};
+    return {
+      logo,
+    };
   },
 });
 </script>
@@ -59,6 +64,16 @@ export default Vue.extend({
     color: #334443 !important;
     text-decoration: none !important;
   }
+}
+
+.header-title__logo-image {
+  margin: -100px 0 -150px 0;
+
+  @media (max-width: 399px) {
+    margin: -50px 0 -100px 0;
+  }
+
+  max-width: 100vw;
 }
 
 .link-divider {
