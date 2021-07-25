@@ -14,6 +14,9 @@
       <span class="link-divider"> | </span>
 
       <AnimatedLink text="fb" link="/lp" />
+      <span class="link-divider"> | </span>
+
+      <AnimatedLink text="pics" link="/" />
 
       <div />
 
@@ -23,7 +26,7 @@
       <AnimatedLink text="airbnb" link="/airbnb" />
       <span class="link-divider"> | </span>
 
-      <AnimatedLink text="house rules" link="/more-info" />
+      <AnimatedLink text="more info" link="/more-info" />
     </div>
   </div>
 </template>
