@@ -27,6 +27,10 @@ export default Vue.extend({
     dataImage: {
       type: String,
     },
+    multiplier: {
+      type: Number,
+      default: 1,
+    },
   },
   data: () => ({
     width: 0 as number,
@@ -53,8 +57,11 @@ export default Vue.extend({
       const _this = this as any;
       const rX = _this.mousePX * (0.015 * window.screen.width);
       const rY = _this.mousePY * -(0.015 * window.screen.height);
+
       return {
         transform: `rotateY(${rX}deg) rotateX(${rY}deg)`,
+        height: `${_this.multiplier * 0.41}vh`,
+        minHeight: `80vh`,
       };
     },
     cardBgTransform() {
@@ -148,7 +155,6 @@ $small: 360px;
     width: 95vw;
   }
 
-  height: 80vh;
   background-color: black;
   overflow: hidden;
   border-radius: 10px;
@@ -180,7 +186,7 @@ $small: 360px;
   width: 100%;
   bottom: 0;
   color: #fff;
-  transform: translateY(-20%);
+  transform: translateY(-5%);
 
   @media screen and (max-width: $small) {
     transform: translateY(0);

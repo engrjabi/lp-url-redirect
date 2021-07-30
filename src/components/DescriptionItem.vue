@@ -24,6 +24,7 @@ export default Vue.extend({});
 .description-item__value {
   font-size: 18px;
   font-weight: bolder;
+  white-space: pre-wrap;
 }
 
 .description-item__container {

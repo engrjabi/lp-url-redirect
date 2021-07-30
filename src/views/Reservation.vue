@@ -9,7 +9,11 @@
       Invalid Link
     </div>
 
-    <card v-else data-image="/img/86.jpg">
+    <card
+      v-else
+      data-image="/img/86.jpg"
+      :multiplier="ticketDetails['Name'].toUpperCase().length"
+    >
       <div slot="header">
         <h1 class="reservation__header">Little Paradise Reservation</h1>
 
