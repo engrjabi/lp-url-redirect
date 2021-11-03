@@ -110,7 +110,7 @@ export default Vue.extend({
 <style lang="scss">
 $hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
 $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-$small: 360px;
+$small: 800px;
 
 .card-wrap {
   margin: auto;
