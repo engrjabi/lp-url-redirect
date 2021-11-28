@@ -16,7 +16,8 @@
       <div></div>
 
       <AnimatedLink is-support text="available dates" link="/calendar" />
-      <AnimatedLink is-support text="show location" link="/location" />
+      <AnimatedLink is-support text="gmaps location" link="/location" />
+      <AnimatedLink is-support text="waze location" link="/waze" />
       <div />
 
       <AnimatedLink is-footer text="fb page" link="/lp" />
