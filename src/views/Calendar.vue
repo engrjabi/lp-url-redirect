@@ -78,10 +78,16 @@ export default Vue.extend({
               .replace(")", "")
               .split(",");
             const result = new Date(startDate[0], startDate[1], startDate[2]);
-            const time = `${this.pad(item.Time[0], 2)}:${this.pad(
-              item.Time[1],
+
+            const timeParsed = item.Time.replace("Date(", "")
+              .replace(")", "")
+              .split(",");
+
+            const time = `${this.pad(timeParsed[3], 2)}:${this.pad(
+              timeParsed[4],
               2
             )}`;
+
             const durationParsed = parseInt(
               item.Duration.replace("Day", "").replace("Days", "")
             );
